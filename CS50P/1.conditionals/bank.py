@@ -1,5 +1,5 @@
 def main() -> str:
-    greeting: str = input("Greeting: ").lower()
+    greeting: str = input("Greeting: ").lower().strip()
     if greeting.startswith("hello"):
         print_out = "$0"
     elif greeting.startswith("h"):
@@ -8,4 +8,5 @@ def main() -> str:
         print_out = "$100"
     print(print_out)
 
-main()
+if __name__ == "__main__":
+    main()
