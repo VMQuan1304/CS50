@@ -1,25 +1,35 @@
 def main():
     while True:
-        try:
-            numerator, denominator = input("Fraction: ").split("/")
-            numerator, denominator = int(numerator), int(denominator)
-            fraction = (numerator / denominator) * 100
-            if fraction > 100:
-                continue
-            print(convert_value(fraction))
+        fraction = input("Fraction: ")
+        percentage = convert(fraction)
+        if percentage in ["ValueError", "ZeroDivisionError"]:
+            continue
+        elif percentage > 100:
+            continue
+        else:
+            print(gauge(percentage))
             break
-        except (ValueError, ZeroDivisionError):
-            pass
+        
+def convert(fraction):
+    try:
+        numerator, denominator = fraction.split("/")
+        numerator, denominator = int(numerator), int(denominator)
+    except ValueError:
+        return "ValueError"
+    try:
+        numerator / denominator 
+    except ZeroDivisionError:
+        return "ZeroDivisionError"
+    return round(((numerator / denominator) * 100), 0)
         
 
-
-def convert_value(fraction):
-    if 0 <= fraction <= 1:
+def gauge(percentage):
+    if 0 <= percentage <= 1:
         return "E"
-    elif 99 <= fraction <= 100:
+    elif 99 <= percentage <= 100:
         return "F"
-    elif 1 < fraction < 99:
-        return str(int(round(fraction))) + "%"
+    elif 1 < percentage < 99:
+        return str(int(round(percentage))) + "%"
 
 
 if __name__ == "__main__":
