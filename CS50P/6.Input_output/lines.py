@@ -1,8 +1,8 @@
 import sys
 
 def main():
-    is_valid(sys.argv)
-    count_code_line(sys.argv[1])
+    if is_valid(sys.argv):
+        count_code_line(sys.argv[1])
 
 def is_valid(argv):
     if len(argv[1:]) == 0:
