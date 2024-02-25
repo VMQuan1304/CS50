@@ -6,20 +6,20 @@ def main():
         write_csv(sys.argv[1], sys.argv[2])
 
 def is_valid(argv):
-    if len(sys.argv[1:]) < 2:
+    if len(argv[1:]) < 2:
         sys.exit("Too few command-line arguments")
-    elif len(sys.argv[1:]) > 2:
+    elif len(argv[1:]) > 2:
         sys.exit("Too many command-line arguments")
-    elif not sys.argv[1].endswith(".csv"):
-        sys.exit(f"{sys.argv[1]} is not a CSV file")
+    elif not argv[1].endswith(".csv"):
+        sys.exit(f"{argv[1]} is not a CSV file")
     else:
         return True
 
 def write_csv(input, output):
     try:
-        with open(f"{sys.argv[1]}") as input:
+        with open(f"{input}") as input:
             reader = csv.DictReader(input)
-            with open(f"{sys.argv[2]}", "w", newline="") as output:
+            with open(f"{output}", "w", newline="") as output:
                 writer = csv.DictWriter(output, fieldnames=["first", "last", "house"])
 
                 writer.writeheader()
